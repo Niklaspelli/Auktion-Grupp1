@@ -28,7 +28,7 @@ function CurrentAuctions() {
       {data.map((item, index) => (
        
         <div key={index} className='Card'> 
-       <Link to={"/AuctionDetails"}>
+       <Link key={item.AuctionId} to={"/Auction-Details/" + item.AuctionID}>
           <ul>
           <b>{item.AuctionID}</b>
           <h2>{item.Title}</h2>
