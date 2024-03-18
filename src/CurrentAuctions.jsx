@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react'
+import { Link } from 'react-router-dom';
 
 
 function CurrentAuctions() {
@@ -16,7 +17,9 @@ function CurrentAuctions() {
   return (
     <div>
       {data.map((item, index) => (
-        <div key={index} className='Card'>
+       
+        <div key={index} className='Card'> 
+       <Link to={"/AuctionDetails"}>
           <ul>
           <b>{item.AuctionID}</b>
           <h2>{item.Title}</h2>
@@ -26,17 +29,19 @@ function CurrentAuctions() {
 <div>Seller: <b>{item.CreatedBy}</b></div>
 <p><b>Startdate:</b> {item.StartDate}</p>
 <p><b>Enddate: </b>{item.EndDate}</p>
-<input/>
-<button>Bid</button>
+
           {/* Render other properties here if needed */}
-          </ul>
+          </ul></Link>
         </div>
+       
       ))}
+     
     </div>
+    
   );
 }
 
-export default CurrentAuctions
+export default CurrentAuctions;
 
 
 
