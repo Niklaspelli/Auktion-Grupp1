@@ -1,8 +1,9 @@
 import React from 'react'
+import PastAuctions from './PastAuctions'
 
 const AuctionPast = () => {
   return (
-    <div>AuctionPast</div>
+    <PastAuctions />
   )
 }
 

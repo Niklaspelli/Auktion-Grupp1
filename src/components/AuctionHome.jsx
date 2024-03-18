@@ -1,4 +1,4 @@
-import CurrentAuctions from '../CurrentAuctions'
+import CurrentAuctions from './CurrentAuctions'
 
 import React from 'react'
 
