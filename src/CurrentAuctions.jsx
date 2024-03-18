@@ -1,11 +1,12 @@
 import React, { useState, useEffect} from 'react'
-import { Link } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 
 
 function CurrentAuctions() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    
     fetch('https://auctioneer.azurewebsites.net/auction/x1y/')
       .then(response => response.json()) // Parse response as JSON
       .then(data => setData(data)) // Set the data in state
@@ -19,7 +20,7 @@ function CurrentAuctions() {
       {data.map((item, index) => (
        
         <div key={index} className='Card'> 
-       <Link to={"/AuctionDetails"}>
+       <Link Link key={item.AuctionId} to={"/Auction-Details/" + item.AuctionID}>
           <ul>
           <b>{item.AuctionID}</b>
           <h2>{item.Title}</h2>
