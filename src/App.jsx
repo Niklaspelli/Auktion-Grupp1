@@ -1,6 +1,6 @@
 import React from 'react'
-
 import './App.css'
+import NewAuktion from './newAuktion'
 
 function App() {
   
@@ -8,9 +8,9 @@ function App() {
   return (
     <>
      
-        <p>
-          Här är start template
-        </p>
+     
+          <NewAuktion />
+        
      
      
     </>
