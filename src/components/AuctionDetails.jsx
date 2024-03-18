@@ -5,15 +5,15 @@ function AuctionDetails() {
     const [data, setData] = useState([]);
     const location = useLocation();
 
-    const fetchDetails = async (AuctionID) => {
+    const fetchDetails = async (id) => {
         try {
-            const api = await fetch(`https://auctioneer.azurewebsites.net/auction/x1y?i=${AuctionID}`);
+            const api = await fetch(`https://auctioneer.azurewebsites.net/auction/x1y/?i=${id}`);
             const detailData = await api.json();
             console.log(detailData); // Log the data to see its structure
             if (detailData && detailData.length > 0) {
                 setData(detailData); // Assuming the data is an array
             } else {
-                console.error('No details found for ID:', AuctionID);
+                console.error('No details found for ID:', id);
                 setData([]);
             }
         } catch (error) {

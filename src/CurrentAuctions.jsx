@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import { Link,useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 function CurrentAuctions() {
@@ -20,7 +20,7 @@ function CurrentAuctions() {
       {data.map((item, index) => (
        
         <div key={index} className='Card'> 
-       <Link Link key={item.AuctionId} to={"/Auction-Details/" + item.AuctionID}>
+       <Link Link key={item.AuctionId} to={"/auctiondetails/" + item.AuctionID}>
           <ul>
           <b>{item.AuctionID}</b>
           <h2>{item.Title}</h2>

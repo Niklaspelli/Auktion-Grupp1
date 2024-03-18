@@ -16,7 +16,7 @@ function App() {
 
         <Route path="/" element={<AuctionHome/>} />
         <Route path="/notcurrent" element={<AuctionPast/>} />
-        <Route path="/auction-details/:id" element={<AuctionDetails />} />
+        <Route path="/auctiondetails/:id" element={<AuctionDetails />} />
 
     </Routes>
     </>
