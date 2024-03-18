@@ -1,20 +1,12 @@
-import React from 'react'
-
-import './App.css'
+import React from 'react';
+import CurrentAuctions from './CurrentAuctions';
+import './App.css';
 
 function App() {
-  
-
-  return (
-    <>
-     
-        <p>
-          Här är start template .......
-        </p>
-     
-     
-    </>
-  )
+  return(
+ <>
+ <CurrentAuctions />
+ </>
+ )
 }
-
-export default App
+export default App;
