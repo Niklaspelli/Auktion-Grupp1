@@ -47,6 +47,6 @@ function AuctionDetails() {
             {/* ))} */}
         </div>
     );
-}
+}    
 
 export default AuctionDetails;

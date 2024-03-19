@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-const NewAuktion = () => {
+const NewAuktion = () => {  
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [startDate, setStartDate] = useState("");
