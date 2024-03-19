@@ -20,6 +20,7 @@ function MyNav() {
           >
             <Nav.Link href="/">Pågående</Nav.Link>
             <Nav.Link href="/notcurrent">Avslutade</Nav.Link>
+            <Nav.Link href="/newauktion">Skapa Ny Auktion</Nav.Link>
             {/* <Nav.Link href="/meal-rating">new link</Nav.Link> */}
 
           </Nav>

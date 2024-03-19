@@ -1,5 +1,5 @@
 import CurrentAuctions from './CurrentAuctions'
-import newAuktion from './newAuktion'
+import newAuktion from './NewAuction'
 
 import React from 'react'
 
