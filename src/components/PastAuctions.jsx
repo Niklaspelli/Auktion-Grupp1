@@ -28,7 +28,8 @@ function PastAuctions() {
       {data.map((item, index) => (
        
         <div key={index} className='Card'> 
-       <Link key={item.AuctionId} to={"/Auction-Details/" + item.AuctionID}>
+       
+       <Link key={item.AuctionId} to={"/auctiondetails/" + item.AuctionID}>
           <ul>
           <b>{item.AuctionID}</b>
           <h2>{item.Title}</h2>

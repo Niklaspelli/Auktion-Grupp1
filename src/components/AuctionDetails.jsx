@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import Bid from '../Bid';
+import NewBid from '../NewBid';
 
 function AuctionDetails() {
     const [data, setData] = useState({});//old:[]
@@ -34,13 +36,14 @@ function AuctionDetails() {
                     <ul>
                         <b>{data.AuctionID}</b>
                         <h2>{data.Title}</h2>
+                        
                         <div><b>Starting price: </b><b>{data.StartingPrice}:-</b></div>
                         <p><b>Description: </b>{data.Description}</p>
                         <div>Seller: <b>{data.CreatedBy}</b></div>
                         <p><b>Startdate:</b> {data.StartDate}</p>
                         <p><b>Enddate: </b>{data.EndDate}</p>
-                        <input/>
-                        <button>Bid</button>
+                        <div><NewBid /></div>
+                        
                         {/* Render other properties here if needed */}
                     </ul>
                 </div>
