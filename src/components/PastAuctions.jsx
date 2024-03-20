@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
+import BidList from './BidList';
 
 
 function PastAuctions() {
@@ -28,19 +29,21 @@ function PastAuctions() {
       {data.map((item, index) => (
        
         <div key={index} className='Card'> 
-       <Link key={item.AuctionId} to={"/auctiondetails/" + item.AuctionID}>
+       {/* <Link key={item.AuctionId} to={"/auctiondetails/" + item.AuctionID}> */}
           <ul>
           <b>{item.AuctionID}</b>
           <h2>{item.Title}</h2>
           <div><b>Starting price: </b><b>{item.StartingPrice}:-</b></div>
           <p><b>Description: </b>{item.Description}</p>
           
-<div>Seller: <b>{item.CreatedBy}</b></div>
-<p><b>Startdate:</b> {item.StartDate}</p>
-<p><b>Enddate: </b>{item.EndDate}</p>
+          <div>Seller: <b>{item.CreatedBy}</b></div>
+          <p><b>Startdate:</b> {item.StartDate}</p>
+          <p><b>Enddate: </b>{item.EndDate}</p>
 
           {/* Render other properties here if needed */}
-          </ul></Link>
+          </ul>
+          {/* </Link> */}
+          <BidList AuctionId={item.AuctionID} showHighestOnly={true}/>
         </div>
        
       ))}
