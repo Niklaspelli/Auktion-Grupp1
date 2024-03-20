@@ -2,26 +2,26 @@ import React, { useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
 
 
-function CurrentAuctions() {
+function FutureAuctions() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     fetch('https://auctioneer.azurewebsites.net/auction/x1y/')
       .then(response => response.json()) // Parse response as JSON
       .then(data => {
-        // Filter auctions where the StartDate is today or before, and the EndDate is today or in the future.
-          const today = new Date();
-          const currentAuctionsData = data.filter(auction =>{
+        // Filter auctions where the StartSate and endDate is future
+        const today = new Date();
+          const futureAuctionsData = data.filter(auction =>{
             const startDate =new Date(auction.StartDate);
             const endDate = new Date(auction.EndDate);
-            return startDate <= today && endDate >= today;
+            return startDate > today && endDate >today
           });
-          setData(currentAuctionsData)
+          setData(futureAuctionsData)
       })
       .catch(error => {
         console.error('Error fetching data: ', error);
       });
-      }, []);
+  }, []);
 
   return (
     <div>
@@ -50,8 +50,4 @@ function CurrentAuctions() {
   );
 }
 
-export default CurrentAuctions;
-
-
-
-
+export default FutureAuctions;

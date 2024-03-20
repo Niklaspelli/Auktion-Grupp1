@@ -10,11 +10,11 @@ function PastAuctions() {
       .then(response => response.json()) // Parse response as JSON
       .then(data => {
        /* This is to filter past auctions EndDate is yesterday or before  */
-          const filteredData = data.filter(i =>{
-          const endData = new Date(i.EndDate);
-          const yesterday = new Date();
-          yesterday.setDate(yesterday.getDate() -1);
-          return endData <= yesterday;
+           const today = new Date();
+           const filteredData = data.filter(auction =>{
+            const startDate =new Date(auction.StartDate);
+            const endDate = new Date(auction.EndDate);
+            return endDate < today && startDate <today
            });
           setData(filteredData);// Set the filterdata in state:/
       })

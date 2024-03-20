@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-const NewAuktion = () => {  
+const NewAuction = () => {  
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -110,4 +110,4 @@ const NewAuktion = () => {
   );
 };
 
-export default NewAuktion;
+export default NewAuction;
