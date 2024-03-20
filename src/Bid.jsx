@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-const Bid = ({ AuctionID, Amount, GroupCode, BidID }) => {
+const Bid = ({ AuctionID, Amount, BidID }) => {
   const [amount, setAmount] = useState("");
   const [bidder, setBidder] = useState("");
   const [groupcode, setGroupCode] = useState("");
-  const [auctionID, setAuctionID] = useState("");
-  const [bidID, setBidID] = useState("");
+  const [auctionID, setAuctionID] = useState(AuctionID);
+  const [bidID, setBidID] = useState(BidID);
 
-  const API_POST = `https://auctioneer.azurewebsites.net/bid/x1y/${Amount}}`;
+  const API_POST = `https://auctioneer.azurewebsites.net/bid/${AuctionID}`;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,11 +25,11 @@ const Bid = ({ AuctionID, Amount, GroupCode, BidID }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          BidID: bidID,
           AuctionID: auctionID,
           Amount: amount,
           Bidder: bidder,
-          GroupCode: groupcode,
+          GroupCode: "x1y",
+          BidID: bidID,
         }),
       });
 
@@ -69,19 +69,6 @@ const Bid = ({ AuctionID, Amount, GroupCode, BidID }) => {
         value={groupcode}
         onChange={(e) => setGroupCode(e.target.value)}
       />
-      {/* Input fields for AuctionID and BidID */}
-      {/* <input
-        type="text"
-        placeholder="Auction ID"
-        value={auctionID}
-        onChange={(e) => setAuctionID(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Bid ID"
-        value={bidID}
-        onChange={(e) => setBidID(e.target.value)}
-      /> */}
       <button type="submit">Bid</button>
     </form>
   );

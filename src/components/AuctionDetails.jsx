@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Bid from '../Bid';
 import NewBid from '../NewBid';
+import CurrentBid from './CurrentBid';
 
 function AuctionDetails() {
     const [data, setData] = useState({});//old:[]
@@ -36,7 +37,7 @@ function AuctionDetails() {
                     <ul>
                         <b>{data.AuctionID}</b>
                         <h2>{data.Title}</h2>
-                        
+                        <div>Current bid: <CurrentBid /> </div>
                         <div><b>Starting price: </b><b>{data.StartingPrice}:-</b></div>
                         <p><b>Description: </b>{data.Description}</p>
                         <div>Seller: <b>{data.CreatedBy}</b></div>
