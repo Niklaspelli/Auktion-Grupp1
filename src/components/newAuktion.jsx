@@ -9,7 +9,8 @@ const NewAuktion = () => {
   const [groupCode, setGroupCode] = useState("");
   const [startingPrice, setStartingPrice] = useState("");
   const [createdBy, setCreatedBy] = useState("");
-
+  
+  
 
   const API_POST = "https://auctioneer.azurewebsites.net/auction/x1y"
 
@@ -17,7 +18,7 @@ const NewAuktion = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch( API_POST, {
+      const response = await fetch(API_POST, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -48,6 +49,7 @@ const NewAuktion = () => {
   };
 
   return (
+    
     <form onSubmit={handleSubmit}>
 
     <label for="title">Title:</label>
