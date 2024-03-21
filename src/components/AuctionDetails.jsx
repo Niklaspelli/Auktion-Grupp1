@@ -4,6 +4,7 @@ import Bid from '../Bid';
 import NewBid from '../NewBid';
 import CurrentBid from './CurrentBid';
 
+
 function AuctionDetails() {
     const [data, setData] = useState({});//old:[]
     const location = useLocation();
@@ -37,7 +38,14 @@ function AuctionDetails() {
                     <ul>
                         <b>{data.AuctionID}</b>
                         <h2>{data.Title}</h2>
-                        <div>Current bid: <CurrentBid /> </div>
+                        <div className="dropdown">
+                        <button class="dropbtn">Current bid</button>
+                         <div className="dropdown-content">
+                            
+                        <CurrentBid />
+                       
+                        </div>
+                        </div> 
                         <div><b>Starting price: </b><b>{data.StartingPrice}:-</b></div>
                         <p><b>Description: </b>{data.Description}</p>
                         <div>Seller: <b>{data.CreatedBy}</b></div>
@@ -54,3 +62,4 @@ function AuctionDetails() {
 }    
 
 export default AuctionDetails;
+

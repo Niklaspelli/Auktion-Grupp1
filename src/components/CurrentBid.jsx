@@ -26,16 +26,24 @@ function CurrentBid() {
 
     return (
         <div>
-            {currentBid.map((bid, index) => (                  
-                <div key={index}>
-                    {bid.Amount}
-                    <div>
-                    {bid.Bidder}
+        {currentBid.length === 0 ? (
+            <div>No bids at the moment</div>
+        ) : (
+            currentBid
+                .sort((a, b) => b.Amount - a.Amount) // Sort bids by Amount in descending order
+                .map((bid, index) => (
+                    <div key={index}>
+                        {bid.Amount}
+                        <div>
+                            {bid.Bidder}
+                        </div>
                     </div>
-                </div>
-            ))}
-        </div>
-    );
+                ))
+        )}
+    </div>
+    )
 }    
 
 export default CurrentBid;
+
+
