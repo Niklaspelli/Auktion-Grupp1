@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react'
-import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+
 
 
 function FutureAuctions() {
@@ -23,6 +24,10 @@ function FutureAuctions() {
       });
   }, []);
 
+  const handleDelete = (auctionId) =>{
+    setData(prevData => prevData.filter(auction => auction.auctionId !==auctionId ))
+  }
+
   return (
     <div>
       {data.map((item, index) => (
@@ -35,12 +40,14 @@ function FutureAuctions() {
           <div><b>Starting price: </b><b>{item.StartingPrice}:-</b></div>
           <p><b>Description: </b>{item.Description}</p>
           
-<div>Seller: <b>{item.CreatedBy}</b></div>
-<p><b>Startdate:</b> {item.StartDate}</p>
-<p><b>Enddate: </b>{item.EndDate}</p>
+          <div>Seller: <b>{item.CreatedBy}</b></div>
+          <p><b>Startdate:</b> {item.StartDate}</p>
+          <p><b>Enddate: </b>{item.EndDate}</p>
 
           {/* Render other properties here if needed */}
-          </ul>{/* </Link> */}
+          </ul>
+          {/* </Link> */}
+           <Button variant='danger'>Delete Auction</Button>
         </div>
        
       ))}

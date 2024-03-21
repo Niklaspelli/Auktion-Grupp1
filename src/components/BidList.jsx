@@ -40,14 +40,11 @@ const BidList = ({AuctionId, showHighestOnly}) => {
           {!showHighestOnly && (
             <div>
               {bids.length === 0 ? (
-                <>
-                <p style={{ color: 'blue' }}><b>No bids</b></p>
-
-                
-                </>
+                <p style={{ color: 'blue', marginBottom: '10px' }}><b>No bids</b></p>
               ) : (
                 <div>
-                  <p>All Bids: </p> 
+
+                <p>All Bids: </p> 
                   <ul>
                     {bids
                       .sort((a, b)=> b.Amount - a.Amount) //in descending order
@@ -56,7 +53,7 @@ const BidList = ({AuctionId, showHighestOnly}) => {
                           <p>Bid: {bid.Amount} Bidder:{bid.Bidder}:- </p>
                         </li>
                       ))}
-                  </ul>
+                  </ul> 
                 </div>
               )}
             </div>
