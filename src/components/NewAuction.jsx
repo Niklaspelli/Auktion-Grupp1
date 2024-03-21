@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 //import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 
-const NewAuktion = () => {
+const NewAuction = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -128,9 +128,12 @@ const NewAuktion = () => {
   );
 };
 
-export default NewAuktion;
+export default NewAuction;
 
-{
+
+
+
+/* 
   /* <label for="title">Title:</label>
       <input
         type="text"
@@ -184,5 +187,12 @@ export default NewAuktion;
         placeholder="Created By"
         value={createdBy}
         onChange={(e) => setCreatedBy(e.target.value)}
-      /> */
-}
+      />
+
+      <button type="submit">Post Auction</button>
+    </form>
+  );
+};
+
+export default NewAuction; /*
+ */

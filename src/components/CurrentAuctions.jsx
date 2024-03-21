@@ -9,19 +9,19 @@ function CurrentAuctions() {
     fetch('https://auctioneer.azurewebsites.net/auction/x1y/')
       .then(response => response.json()) // Parse response as JSON
       .then(data => {
-        // Filter data where EndDate is today or a future date
-        const filteredData = data.filter(i => {
-          const endDate = new Date(i.EndDate);
+        // Filter auctions where the StartDate is today or before, and the EndDate is today or in the future.
           const today = new Date();
-          today.setHours(0, 0, 0, 0); // Set time to midnight for accurate comparison
-          return endDate >= today;
-        });
-        setData(filteredData);
+          const currentAuctionsData = data.filter(auction =>{
+            const startDate =new Date(auction.StartDate);
+            const endDate = new Date(auction.EndDate);
+            return startDate <= today && endDate >= today;
+          });
+          setData(currentAuctionsData)
       })
       .catch(error => {
         console.error('Error fetching data: ', error);
       });
-  }, []);
+      }, []);
 
   return (
     <div>
