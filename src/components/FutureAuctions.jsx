@@ -28,7 +28,7 @@ function FutureAuctions() {
       {data.map((item, index) => (
        
         <div key={index} className='Card'> 
-       <Link key={item.AuctionId} to={"/auctiondetails/" + item.AuctionID}>
+       {/* <Link key={item.AuctionId} to={"/auctiondetails/" + item.AuctionID}> */}
           <ul>
           <b>{item.AuctionID}</b>
           <h2>{item.Title}</h2>
@@ -40,7 +40,7 @@ function FutureAuctions() {
 <p><b>Enddate: </b>{item.EndDate}</p>
 
           {/* Render other properties here if needed */}
-          </ul></Link>
+          </ul>{/* </Link> */}
         </div>
        
       ))}

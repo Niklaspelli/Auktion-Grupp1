@@ -10,7 +10,7 @@ function MyNav() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary" fixed="top">
       <Container fluid>
-        <Navbar.Brand href="#">Min Auktion</Navbar.Brand>
+        <Navbar.Brand href="#">My Auction</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -18,10 +18,10 @@ function MyNav() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="/">Pågående</Nav.Link>
-            <Nav.Link href="/notcurrent">Avslutade</Nav.Link>
-            <Nav.Link href="/future">Kommande</Nav.Link>
-            <Nav.Link href="/newauktion">Skapa Ny Auktion</Nav.Link>
+            <Nav.Link href="/">Ongoing</Nav.Link>
+            <Nav.Link href="/notcurrent">Completed</Nav.Link>
+            <Nav.Link href="/future">Upcoming</Nav.Link>
+            <Nav.Link href="/newauktion">Create New Auction</Nav.Link>
             {/* <Nav.Link href="/meal-rating">new link</Nav.Link> */}
 
           </Nav>
