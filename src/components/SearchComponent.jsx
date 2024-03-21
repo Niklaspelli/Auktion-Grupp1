@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 const SearchComponent = ({ searchTerm, setSearchTerm, data }) => {
   const [searchResults, setSearchResults] = useState([]);
 

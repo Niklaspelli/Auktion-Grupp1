@@ -6,7 +6,7 @@ import NewAuktion from './components/newAuktion';
 import AuctionHome from './components/AuctionHome';
 import AuctionPast from './components/AuctionPast';
 import AuctionDetails from './components/AuctionDetails';
-
+import SearchComponent from './components/SearchComponent';
 
 function App() {
   
