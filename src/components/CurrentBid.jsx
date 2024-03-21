@@ -33,7 +33,7 @@ function CurrentBid() {
                 .sort((a, b) => b.Amount - a.Amount) // Sort bids by Amount in descending order
                 .map((bid, index) => (
                     <div key={index}>
-                        {bid.Amount}
+                        {bid.Amount} :-
                         <div>
                             {bid.Bidder}
                         </div>

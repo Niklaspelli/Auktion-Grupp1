@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import NewBid from '../NewBid';
+import CurrentBid from './CurrentBid';
+
 
 
 function AuctionDetails() {
@@ -71,14 +74,20 @@ function AuctionDetails() {
                     <ul>
                         <b>{data.AuctionID}</b>
                         <h2>{data.Title}</h2>
+                        <div className="dropdown">
+                        <button class="dropbtn">Current bid</button>
+                         <div className="dropdown-content">
+                            
+                        <CurrentBid />
+                       
+                        </div>
+                        </div> 
                         <div><b>Starting price: </b><b>{data.StartingPrice}:-</b></div>
                         <p><b>Description: </b>{data.Description}</p>
                         <div>Seller: <b>{data.CreatedBy}</b></div>
                         <p><b>Startdate:</b> {data.StartDate}</p>
                         <p><b>Enddate: </b>{data.EndDate}</p>
-                        {/* <input/>
-                        <button>Bid</button> */}
-                        {/* Render other properties here if needed */}
+
                     </ul>
 
 
@@ -116,3 +125,4 @@ function AuctionDetails() {
 }    
 
 export default AuctionDetails;
+
