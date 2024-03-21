@@ -1,11 +1,10 @@
-import React, {useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 
 const Fetch_useEfftct2 = () => {
 
- const [data, setData ]= useState(null);
- const [loading, setLoading]= useState(true);
- const [error, setError] = useState(null);
+ 
+
 
  useEffect(()=>{
     fetch('https://auctioneer.azurewebsites.net/auction/x1y/')

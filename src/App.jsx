@@ -6,6 +6,8 @@ import NewAuktion from './components/newAuktion';
 import AuctionHome from './components/AuctionHome';
 import AuctionPast from './components/AuctionPast';
 import AuctionDetails from './components/AuctionDetails';
+import Fetch_useEfftct2 from './components/Fetch_useEfftct2';
+
 
 
 function App() {
@@ -23,7 +25,7 @@ function App() {
   )
   }
 
-  const [searchTerm, setSearchTerm]= useState('');
+  const [searchTerm, setSearchTerm]= Fetch_useEfftct2('');
 
   const handleSearch = (term) =>{
     setSearchTerm(term);
@@ -32,7 +34,6 @@ function App() {
   <MyNav onSearch={handleSearch} />
     <Routes>
      <Route path='/' element={<Home/>}/>
-     <Route path='/usestete' element={<UseState_page />}/>
      <Route path='/props' element={<Props_page/>}/>
      <Route 
      path='/useeffect' 
