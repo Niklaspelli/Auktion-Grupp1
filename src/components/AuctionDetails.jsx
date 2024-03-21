@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import NewBid from '../NewBid';
 import CurrentBid from './CurrentBid';
 
 
@@ -35,9 +34,6 @@ function AuctionDetails() {
         fetchDetails(lastPartOfLocationPath);
     }, [location]);
 
-
-
-// // BID Johanna Lagt till -->
 
   const handleSubmit = async (e, AuctionID) => {
     e.preventDefault();
