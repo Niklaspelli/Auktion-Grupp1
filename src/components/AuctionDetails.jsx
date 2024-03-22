@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import CurrentBid from './CurrentBid';
+import Form from "react-bootstrap/Form";
+import Button from 'react-bootstrap/Button';
+import styled from "styled-components";
+import DeleteAuction from "./DeleteAuction";
 
 
 
@@ -66,19 +70,21 @@ function AuctionDetails() {
     return (
         <div>
             {/* {data.map((item, index) => ( // This data is not array*/}
-                <div className='Card'>
+            <AuctionStyle>
+                <div className='BidCard'>
+                  
                     <ul>
                         <b>{data.AuctionID}</b>
                         <h2>{data.Title}</h2>
                         <div className="dropdown">
-                        <button class="dropbtn">Current bid</button>
+                        <button className="dropbtn">Current bid</button>
                          <div className="dropdown-content">
                             
                         <CurrentBid />
                        
                         </div>
                         </div> 
-                        <div><b>Starting price: </b><b>{data.StartingPrice}:-</b></div>
+                        <div><b>Starting price: </b>{data.StartingPrice}:-</div>
                         <p><b>Description: </b>{data.Description}</p>
                         <div>Seller: <b>{data.CreatedBy}</b></div>
                         <p><b>Startdate:</b> {data.StartDate}</p>
@@ -86,10 +92,13 @@ function AuctionDetails() {
 
                     </ul>
 
-
+                    <h2>Place Your Bid</h2>
                    {/* Johanna lagt till  */}
-                    <form>
+                   
+                    <Form.Floating className="mb-3">
+                    
                         <input
+                          className='bidInput'
                           type="bid"
                           placeholder="Bid"
                           value={bid}
@@ -97,6 +106,7 @@ function AuctionDetails() {
                         />
 
                         <input
+                          className='bidInput'
                           type="text"
                           placeholder="Group Code"
                           value={groupCode}
@@ -104,21 +114,79 @@ function AuctionDetails() {
                         /> 
 
                         <input
+                          className='bidInput'
                           type="text"
                           placeholder="bidder"
                           value={bidder}
                           onChange={(e) => setBidder(e.target.value)}
                         /> 
-                           
+                      </Form.Floating>     
                     {/* <button type="submit">Post Bid</button> */}
-                    <button type="submit" onClick={(e) => handleSubmit(e, data.AuctionID)}>Post Bid</button>
-                    </form>
+                    <Button variant="success" type="submit" onClick={(e) => handleSubmit(e, data.AuctionID)}>Post Bid</Button>{''}
+                    
 
                 </div>
-            {/* ))} */}
+        </AuctionStyle>
+
+        <DeleteAuction />
         </div>
+        
     );
 }    
 
 export default AuctionDetails;
 
+
+const AuctionStyle = styled.div`
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  overflow-y: auto; /* Enable vertical scrollbar */
+  max-height: 100px; 
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:focus-within .dropdown-content {
+  display: block;
+}
+
+.bidStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ margin: 10px;
+
+
+}
+.bidInput  {
+  margin: 5px;
+}
+
+.BidCard {
+  width: 400px;
+  height: 530px;
+  margin: 2rem;
+  border: 3px solid black;
+  border-radius: 15%;
+  justify-content: center;
+  align-items: center;
+  background-color: darkkhaki;
+  
+}
+
+`;

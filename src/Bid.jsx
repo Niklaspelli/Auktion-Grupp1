@@ -1,20 +1,36 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 
-const Bid = ({ AuctionID, Amount, BidID }) => {
+const Bid = ({ AuctionID, StartingPrice, BidID }) => {
   const [amount, setAmount] = useState("");
   const [bidder, setBidder] = useState("");
   const [groupcode, setGroupCode] = useState("");
   const [auctionID, setAuctionID] = useState(AuctionID);
   const [bidID, setBidID] = useState(BidID);
+  const [message, setMessage] = useState(""); // State to store the message
+
+  const Message = styled.div`
+    color: red;
+    font-weight: bold;
+  `;
 
   const API_POST = `https://auctioneer.azurewebsites.net/bid/${AuctionID}`;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    // Clear any previous message
+    setMessage("");
+
     // Basic bid validation
     if (!amount || isNaN(parseFloat(amount)) || parseFloat(amount) <= 0) {
-      alert("Please enter a valid bid amount.");
+      setMessage("Please enter a valid bid amount.");
+      return;
+    }
+
+    // Check if bid amount is lower than start bid amount
+    if (parseFloat(amount) < parseFloat(StartingPrice)) {
+      setMessage("Bid amount is too low.");
       return;
     }
 
@@ -34,7 +50,7 @@ const Bid = ({ AuctionID, Amount, BidID }) => {
       });
 
       if (response.ok) {
-        alert("Bid placed successfully!");
+        setMessage("Bid placed successfully!");
         setAmount("");
         setBidder("");
         setGroupCode("");
@@ -42,35 +58,39 @@ const Bid = ({ AuctionID, Amount, BidID }) => {
         setBidID("");
       } else {
         console.error("Failed to place bid:", response.statusText);
+        setMessage("Failed to place bid. Please try again later.");
       }
     } catch (error) {
       console.error("Fetch error:", error);
-      alert("Failed to place bid. Please try again later.");
+      setMessage("Failed to place bid. Please try again later.");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="number"
-        placeholder="Bid amount"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Bidder"
-        value={bidder}
-        onChange={(e) => setBidder(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="GroupCode"
-        value={groupcode}
-        onChange={(e) => setGroupCode(e.target.value)}
-      />
-      <button type="submit">Bid</button>
-    </form>
+    <div>
+      {message && <Message>{message}</Message>}
+      <form onSubmit={handleSubmit}>
+        <input
+          type="number"
+          placeholder="Bid amount"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Bidder"
+          value={bidder}
+          onChange={(e) => setBidder(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="GroupCode"
+          value={groupcode}
+          onChange={(e) => setGroupCode(e.target.value)}
+        />
+        <button type="submit">Bid</button>
+      </form>
+    </div>
   );
 };
 
