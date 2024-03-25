@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import DeleteAuction from './DeleteAuction';
+import Alert from 'react-bootstrap/Alert';
 
 
 
@@ -18,6 +19,7 @@ function FutureAuctions() {
             return startDate > today && endDate >today
           });
           setData(futureAuctionsData)
+          console.log(futureAuctionsData)
       })
       .catch(error => {
         console.error('Error fetching data: ', error);
@@ -30,7 +32,11 @@ function FutureAuctions() {
 
   return (
     <div>
-      {data.map((item, index) => (
+      {/* Add message If there is no upcoming auction */}
+      { data.length === 0 ?(
+        <Alert variant='warning'> There is no Upcoming Auction. You can create{' '} <Alert.Link href="/newauction">New Auction</Alert.Link>!</Alert>
+
+      ): (data.map((item, index) => (
        
         <div key={index} className='Card'> 
        {/* <Link key={item.AuctionId} to={"/auctiondetails/" + item.AuctionID}> */}
@@ -50,8 +56,9 @@ function FutureAuctions() {
            {/* <Button variant='danger'>Delete Auction</Button> */}
           <DeleteAuction auctionId={item.AuctionID} onDelete={handleDelete}/>
         </div>
-       
-      ))}
+      ) 
+      )
+      )}
      
     </div>
     
