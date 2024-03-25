@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import { Button } from 'react-bootstrap';
+import DeleteAuction from './DeleteAuction';
 
 
 
@@ -22,7 +22,7 @@ function FutureAuctions() {
       .catch(error => {
         console.error('Error fetching data: ', error);
       });
-  }, []);
+  }, [data]); // whenever data changes updating the view with the latest data
 
   const handleDelete = (auctionId) =>{
     setData(prevData => prevData.filter(auction => auction.auctionId !==auctionId ))
@@ -47,7 +47,8 @@ function FutureAuctions() {
           {/* Render other properties here if needed */}
           </ul>
           {/* </Link> */}
-           <Button variant='danger'>Delete Auction</Button>
+           {/* <Button variant='danger'>Delete Auction</Button> */}
+          <DeleteAuction auctionId={item.AuctionID} onDelete={handleDelete}/>
         </div>
        
       ))}
