@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import { useState, useEffect} from 'react'
 import DeleteAuction from './DeleteAuction';
 import Alert from 'react-bootstrap/Alert';
 
