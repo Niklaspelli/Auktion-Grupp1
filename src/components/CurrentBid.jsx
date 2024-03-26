@@ -35,7 +35,9 @@ function CurrentBid() {
                     <div key={index}>
                         {bid.Amount} :-
                         <div>
+                            <b>
                             {bid.Bidder}
+                            </b>
                         </div>
                     </div>
                 ))

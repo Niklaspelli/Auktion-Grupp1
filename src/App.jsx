@@ -16,7 +16,7 @@ function App() {
     <>
     <MyNav />
     <Routes>
-        <Route path="/newauktion" element={<AuctionCreate/>} />
+        <Route path="/newauction" element={<AuctionCreate/>} />
         <Route path="/" element={<AuctionHome/>} />
         <Route path="/notcurrent" element={<AuctionPast/>} />
         <Route path="/future" element={<AuctionFuture />} />

@@ -1,6 +1,6 @@
-import  { useState } from "react";
-//import FloatingLabel from "react-bootstrap/FloatingLabel";
+import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
+import styled from "styled-components";
 
 const NewAuction = () => {
   const [title, setTitle] = useState("");
@@ -10,11 +10,19 @@ const NewAuction = () => {
   const [groupCode, setGroupCode] = useState("x1y");
   const [startingPrice, setStartingPrice] = useState("");
   const [createdBy, setCreatedBy] = useState("");
+  const [status, setStatus] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const API_POST = "https://auctioneer.azurewebsites.net/auction/x1y";
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // Check if any input fields are empty
+    if (!title || !description || !startDate || !endDate || !startingPrice || !createdBy) {
+      setErrorMessage("Please fill in all fields.");
+      return;
+    }
 
     try {
       const response = await fetch(API_POST, {
@@ -32,20 +40,40 @@ const NewAuction = () => {
           CreatedBy: createdBy,
         }),
       });
-      console.log(response);
-      setTitle("");
-      setDescription("");
-      setStartDate("");
-      setEndDate("");
-      setStartingPrice("");
-      setCreatedBy("");
+
+      if (response.ok) {
+        setStatus("SUCCESS");
+        setTitle("");
+        setDescription("");
+        setStartDate("");
+        setEndDate("");
+        setStartingPrice("");
+        setCreatedBy("");
+        setErrorMessage(""); // Clear any previous error messages
+      } else {
+        console.error("Failed to post auction");
+        setStatus("ERROR");
+      }
     } catch (error) {
-      console.error("fetch error:");
+      console.error("Fetch error:", error);
+      setStatus("ERROR");
     }
   };
+  
+  useEffect(() => {
+    if (status === "SUCCESS" || status === "ERROR") {
+      const timeout = setTimeout(() => {
+        setStatus("");
+      }, 3000);
+      return () => clearTimeout(timeout);
+    }
+  }, [status]);
+
 
   return (
     <>
+
+    
       <Form.Floating className="mb-3">
         <Form.Control
           id="floatingInputCustom"
@@ -95,6 +123,7 @@ const NewAuction = () => {
         Start Date
       </div>
       <input
+      
         type="datetime-local"
         value={startDate}
         onChange={(e) => setStartDate(e.target.value)}
@@ -124,13 +153,41 @@ const NewAuction = () => {
       <button type="submit" onClick={(e) => handleSubmit(e)}>
         Post Auction
       </button>
+
+      {status === "SUCCESS" && (
+        <Message>
+          <p>Your auction has been successfully posted!</p>
+       </Message>
+      )}
+        {status === "ERROR" && (
+        <Message>
+          <p>Failed to post auction. Please try again later.</p>
+       </Message>
+      )}
+       {errorMessage && (
+        <MessageError>
+          {errorMessage}
+        </MessageError>
+      )}
+      
     </>
   );
 };
 
+
+
+
 export default NewAuction;
 
+ const Message = styled.div`
+  color: green;
+  font-weight: bold;
+`; 
 
+const MessageError = styled.div`
+  color: red;
+  font-weight: bold;
+`;
 
 
 /* 
