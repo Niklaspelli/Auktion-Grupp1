@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 
+
 function MyNav() {
 
   return (
@@ -24,6 +25,9 @@ function MyNav() {
             {/* <Nav.Link href="/meal-rating">new link</Nav.Link> */}
 
           </Nav>
+         
+            <Button variant="outline-success" >Search</Button>
+          
         </Navbar.Collapse>
       </Container>
     </Navbar>
