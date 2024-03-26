@@ -1,6 +1,6 @@
 import CurrentAuctions from './CurrentAuctions'
 
-import React from 'react'
+
 
 const AuctionHome = () => {
   return (
