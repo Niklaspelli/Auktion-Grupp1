@@ -64,3 +64,4 @@ const BidList = ({AuctionId, showHighestOnly}) => {
         
 
 export default BidList
+
