@@ -1,4 +1,4 @@
-import React from "react";
+
 import Bid from "./Bid";
 
 const NewBid = () => {
