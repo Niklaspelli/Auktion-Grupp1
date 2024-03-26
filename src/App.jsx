@@ -7,6 +7,7 @@ import AuctionPast from './components/AuctionPast';
 import AuctionDetails from './components/AuctionDetails';
 import AuctionCreate from './components/AuctionCreate';
 import AuctionFuture from './components/AuctionFuture';
+import Footer from './components/Footer';
 
 function App() {
   
@@ -21,6 +22,7 @@ function App() {
         <Route path="/future" element={<AuctionFuture />} />
         <Route path="/auctiondetails/:id" element={<AuctionDetails />} />
     </Routes>
+    <Footer />
     </>
   )
 }
