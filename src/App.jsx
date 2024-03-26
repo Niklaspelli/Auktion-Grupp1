@@ -2,11 +2,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import MyNav from './components/nav/MyNav'
+import NewAuction from './components/NewAuction';
 import AuctionHome from './components/AuctionHome';
 import AuctionPast from './components/AuctionPast';
 import AuctionDetails from './components/AuctionDetails';
-import AuctionCreate from './components/AuctionCreate';
-import AuctionFuture from './components/AuctionFuture';
+import SearchAuctions from './components/AuctionDetails';
+
 
 function App() {
   
@@ -15,11 +16,11 @@ function App() {
     <>
     <MyNav />
     <Routes>
-        <Route path="/newauktion" element={<AuctionCreate/>} />
+       <Route path="/NewAuction" element={<NewAuction/>} />
         <Route path="/" element={<AuctionHome/>} />
         <Route path="/notcurrent" element={<AuctionPast/>} />
-        <Route path="/future" element={<AuctionFuture />} />
         <Route path="/auctiondetails/:id" element={<AuctionDetails />} />
+
     </Routes>
     </>
   )
