@@ -19,6 +19,11 @@ function CurrentBid() {
         }
     };
 
+ /*    useEffect(()=>{
+        fetchDetails()
+    },[currentBid]) */
+
+
     useEffect(() => {
         const lastPartOfLocationPath = location.pathname.split('/').slice(-1)[0];
         fetchDetails(lastPartOfLocationPath);
