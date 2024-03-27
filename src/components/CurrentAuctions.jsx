@@ -42,27 +42,14 @@ function CurrentAuctions() {
           else {
             setData([]);
           }
-
-
-
-
-
-
-
-
 }
         catch(error){
 
         }
-
-
-
   };
   function handleSearch() {
     fetchAuctions();
   }
-
-
 
   function handleChange(e) {
     e.preventDefault()
@@ -81,20 +68,9 @@ function CurrentAuctions() {
           value = {search}
           onChange={handleChange}
 
-
-
-
         />
         <Button variant="outline-success" onClick={handleSearch}>Search</Button>
       </Form>
-
-
-
-
-
-
-
-
 
      {
       data.length
