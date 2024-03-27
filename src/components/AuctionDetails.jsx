@@ -16,6 +16,7 @@ function AuctionDetails() {
     const [bidder, setBidder] = useState('');
     const [groupCode, setGroupCode] = useState('x1y');
     const [errorMessage, setErrorMessage] = useState('');
+    const [fetchTrigger, setFetchTrigger] = useState(false);
 
     const fetchDetails = async (AuctionID) => {
         try {
@@ -79,6 +80,8 @@ function AuctionDetails() {
          //Reset from field if bid is successfully posted!
           setBid("");
           setBidder('');
+          //Toggle fetchTrigger state It re-fetch bid data in CurrentBid component
+          setFetchTrigger(prevState => !prevState);
         }
       } catch (error) {
         console.error("fetch error:");
@@ -102,7 +105,7 @@ function AuctionDetails() {
                         <button className="dropbtn">Current bid</button>
                          <div className="dropdown-content">
                             
-                        <CurrentBid />
+                        <CurrentBid  auctionId ={data.AuctionID} fetchTrigger={fetchTrigger} />
                        
                         </div>
                         </div> 
