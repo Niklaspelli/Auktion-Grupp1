@@ -2,10 +2,17 @@ import {Button} from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Form from 'react-bootstrap/Form';
+import {useState } from 'react';
 
 
+function MyNav({onSearch}) {
+  const [searchTerm, setSearchTerm]= useState('');
 
-function MyNav() {
+  const handleSearch =() =>{
+  onSearch(searchTerm);
+ }
+ 
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary" fixed="top">
@@ -26,7 +33,17 @@ function MyNav() {
 
           </Nav>
          
-            <Button variant="outline-success" >Search</Button>
+          <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+              value={searchTerm}
+              onChange={(e)=> setSearchTerm(e.target.value)}
+            />
+            <Button variant="secondary"onClick={handleSearch} >Search</Button>
+          </Form>
           
         </Navbar.Collapse>
       </Container>

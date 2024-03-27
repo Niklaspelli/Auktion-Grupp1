@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
+import AuctionCreate from './AuctionCreate';
 
 
-function CurrentAuctions() {
+function CurrentAuctions({searchTerm}) {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [specificAuction, setSpecificAuction] = useState(null);
@@ -26,23 +27,32 @@ function CurrentAuctions() {
     //       console.error('Error fetching data: ', error);
     //     });
     fetchAuctions();
-  }, []);
+  }, [searchTerm]);
 
   const fetchAuctions = async () => {
     try {
-      const response = await fetch('https://auctioneer.azurewebsites.net/auction/x1y/' + search);
-      const data = await response.json()
+      const response = await fetch('https://auctioneer.azurewebsites.net/auction/x1y/'+search);
+      const data = await response.json();
       console.log(data);
-      if (data) {
-        setData(data)
-
-      }
-      else {
+  
+      const today = new Date();
+      const currentAuctionsData = data.filter(auction => {
+        const startDate = new Date(auction.StartDate);
+        const endDate = new Date(auction.EndDate);
+        return startDate <= today && endDate >= today;
+      });
+  
+      if (currentAuctionsData.length > 0) {
+        setData(currentAuctionsData);
+      } else {
         setData([]);
       }
+    } catch (error) {
+      console.error('Error fetching data: ', error);
     }
-    catch (error) { /* empty */ }
   };
+
+
   function handleSearch() {
     const searchedAuction = data.filter(d => {
       return d.AuctionID === parseInt(search)
@@ -54,10 +64,10 @@ function CurrentAuctions() {
     e.preventDefault()
     setSearch(e.target.value);
 
-  }
+  } 
   return (
     <div>
-      <div className="mt-5"></div>
+       <div className="mt-5"></div>
       <Form className="d-flex flex-grow-1 justify-content-end">
         <Form.Control
           type="search"
@@ -68,7 +78,7 @@ function CurrentAuctions() {
           onChange={handleChange}
         />
         <Button variant="outline-success" onClick={handleSearch}>Search</Button>
-      </Form>
+      </Form> 
 
       {
         (!specificAuction && data.length > 0)
