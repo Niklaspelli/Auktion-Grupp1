@@ -37,7 +37,7 @@ const BidList = ({AuctionId, showHighestOnly}) => {
             </div>
           )}
       
-          {!showHighestOnly && (
+         {/*  {!showHighestOnly && (
             <div>
               {bids.length === 0 ? (
                 <p style={{ color: 'blue', marginBottom: '10px' }}><b>No bids</b></p>
@@ -57,7 +57,7 @@ const BidList = ({AuctionId, showHighestOnly}) => {
                 </div>
               )}
             </div>
-          )}
+          )} */}
         </>
       );
   }
