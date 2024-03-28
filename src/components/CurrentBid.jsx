@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-function CurrentBid() {
+function CurrentBid({ auctionId, fetchTrigger }) {
     const [currentBid, setCurrentBid] = useState([]);
 
     const fetchDetails = async (AuctionID) => {
@@ -19,10 +19,16 @@ function CurrentBid() {
         }
     };
 
+    //Fetch bid list when onBidPosted is called
+     useEffect(()=>{
+        fetchDetails(auctionId)// Pass AuctionID
+    },[fetchTrigger]) 
+
+
     useEffect(() => {
         const lastPartOfLocationPath = location.pathname.split('/').slice(-1)[0];
         fetchDetails(lastPartOfLocationPath);
-    }, []);
+    }, [location]);
 
     return (
         <div>
