@@ -2,10 +2,10 @@ import CurrentAuctions from './CurrentAuctions'
 
 import React from 'react'
 
-const AuctionHome = () => {
+const AuctionHome = ({searchTerm}) => {
   return (
     <div>
-   <CurrentAuctions />
+   <CurrentAuctions searchTerm= {searchTerm} />
    </div>
   )
 }
