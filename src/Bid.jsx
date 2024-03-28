@@ -68,7 +68,7 @@ const Bid = ({ AuctionID, StartingPrice, BidID }) => {
 
   return (
     <div>
-      {message && <Message>{message}</Message>}
+      <Message>{message}</Message>
       <form onSubmit={handleSubmit}>
         <input
           type="number"
