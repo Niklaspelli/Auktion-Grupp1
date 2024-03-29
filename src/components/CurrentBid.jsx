@@ -48,4 +48,3 @@ function CurrentBid() {
 
 export default CurrentBid;
 
-

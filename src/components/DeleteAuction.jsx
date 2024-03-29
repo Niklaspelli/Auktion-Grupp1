@@ -28,4 +28,3 @@ const handleDelete = () => {
 
 export default DeleteAuction
 
-
