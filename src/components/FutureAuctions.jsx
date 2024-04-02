@@ -57,7 +57,7 @@ function FutureAuctions() {
   return (
     <div>
       {allAuctions.length === 0 ? (
-        <Alert variant='warning'>There is no Upcoming Auction.</Alert>
+        <Alert variant='warning'> There is no Upcoming Auction. You can create{' '} <Alert.Link href="/newauction">New Auction</Alert.Link>!</Alert>
       ) : (
         <div>
           <div className="search-container mt-5 p-5  fixed-top d-flex justify-content-center ">
