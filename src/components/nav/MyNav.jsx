@@ -8,7 +8,7 @@ function MyNav() {
 
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary" fixed="top">
+    <Navbar expand="lg" className="bg-body-tertiary" fixed="top" style={{ zIndex: '1000' }}>
       <Container fluid>
         <Navbar.Brand className="lobster-regular" href="#">My Auction</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />

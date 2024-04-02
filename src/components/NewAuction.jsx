@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Container, Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import styled from "styled-components";
 
@@ -71,8 +72,8 @@ const NewAuction = () => {
 
 
   return (
-    <>
-
+    <Container>
+    <h2>Create New Auction</h2>
     
       <Form.Floating className="mb-3">
         <Form.Control
@@ -97,17 +98,6 @@ const NewAuction = () => {
         <label htmlFor="floatingInputCustom">Describe product here</label>
       </Form.Floating>
 
-      {/* <Form.Floating className="mb-3">
-        <Form.Control
-          id="floatingInputCustom"
-          type="text"
-          placeholder=""
-          value={groupCode}
-          onChange={(e) => setGroupCode(e.target.value)}
-        />
-        <label htmlFor="floatingInputCustom">Title</label>
-      </Form.Floating> */}
-
       <Form.Floating className="mb-3">
         <Form.Control
           id="floatingInputCustom"
@@ -119,9 +109,9 @@ const NewAuction = () => {
         <label htmlFor="floatingInputCustom">Starting Price</label>
       </Form.Floating>
 
-      <div label htmlFor="StartDate">
+      <label htmlFor="StartDate" className="mb-3 p-2">
         Start Date
-      </div>
+      </label>
       <input
       
         type="datetime-local"
@@ -129,9 +119,9 @@ const NewAuction = () => {
         onChange={(e) => setStartDate(e.target.value)}
       />
 
-      <div label htmlFor="endDate">
+      <label htmlFor="endDate" className="mb-3 p-2">
         End Date
-      </div>
+      </label>
       <input
         type="datetime-local"
         placeholder="End Date"
@@ -150,9 +140,9 @@ const NewAuction = () => {
         <label htmlFor="floatingInputCustom">Created by</label>
       </Form.Floating>
 
-      <button type="submit" onClick={(e) => handleSubmit(e)}>
+      <Button variant="success" type="submit" onClick={(e) => handleSubmit(e)}>
         Post Auction
-      </button>
+      </Button>
 
       {status === "SUCCESS" && (
         <Message>
@@ -170,7 +160,7 @@ const NewAuction = () => {
         </MessageError>
       )}
       
-    </>
+    </Container>
   );
 };
 
@@ -188,68 +178,3 @@ const MessageError = styled.div`
   color: red;
   font-weight: bold;
 `;
-
-
-/* 
-  /* <label for="title">Title:</label>
-      <input
-        type="text"
-        placeholder="Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-
-    <label for = "description">Description</label>
-      <textarea
-        placeholder="Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-
-    <label for = "StartDate">Start Date</label>
-      <input
-        type="datetime-local"
-        placeholder="Start Date"
-        value={startDate}
-        onChange={(e) => setStartDate(e.target.value)}
-      />
-
-    <label for = "endDate">End Date</label>
-      <input
-        type="datetime-local"
-        placeholder="End Date"
-        value={endDate}
-        onChange={(e) => setEndDate(e.target.value)}
-      />
-
-    <label for = "groupCode">Group Code</label>
-      <input
-        type="text"
-        placeholder="Group Code"
-        value={groupCode}
-        onChange={(e) => setGroupCode(e.target.value)}
-      />
-
-    <label for = "startingPrice">Starting price:</label>
-      <input
-        type="number"
-        placeholder="Starting Price"
-        value={startingPrice}
-        onChange={(e) => setStartingPrice(e.target.value)}
-      />
-
-    <label for = "createdBy">Create By:</label>
-      <input
-        type="text"
-        placeholder="Created By"
-        value={createdBy}
-        onChange={(e) => setCreatedBy(e.target.value)}
-      />
-
-      <button type="submit">Post Auction</button>
-    </form>
-  );
-};
-
-export default NewAuction; /*
- */
