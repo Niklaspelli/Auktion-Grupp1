@@ -21,13 +21,13 @@ function PastAuctions() {
       }
         const data = await response.json();
         const today = new Date();
-        const filteredData = data.filter(auction => {
+        const pastAuctionsData = data.filter(auction => {
         const startDate = new Date(auction.StartDate);
         const endDate = new Date(auction.EndDate);
         return endDate < today && startDate < today;
       });
   
-      setAllAuctions(filteredData);
+      setAllAuctions(pastAuctionsData);
     } catch (error) {
       console.error('Error fetching data: ', error);
     }
