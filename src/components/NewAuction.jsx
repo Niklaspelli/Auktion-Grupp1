@@ -97,7 +97,7 @@ const NewAuction = () => {
         <label htmlFor="floatingInputCustom">Describe product here</label>
       </Form.Floating>
 
-      <Form.Floating className="mb-3">
+      {/* <Form.Floating className="mb-3">
         <Form.Control
           id="floatingInputCustom"
           type="text"
@@ -106,7 +106,7 @@ const NewAuction = () => {
           onChange={(e) => setGroupCode(e.target.value)}
         />
         <label htmlFor="floatingInputCustom">Title</label>
-      </Form.Floating>
+      </Form.Floating> */}
 
       <Form.Floating className="mb-3">
         <Form.Control
