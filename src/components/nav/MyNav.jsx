@@ -32,18 +32,6 @@ function MyNav({onSearch}) {
             {/* <Nav.Link href="/meal-rating">new link</Nav.Link> */}
 
           </Nav>
-         
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-              value={searchTerm}
-              onChange={(e)=> setSearchTerm(e.target.value)}
-            />
-            <Button variant="secondary"onClick={handleSearch} >Search</Button>
-          </Form>
           
         </Navbar.Collapse>
       </Container>
