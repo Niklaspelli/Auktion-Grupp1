@@ -4,20 +4,16 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import {useState } from 'react';
+import './MyNav.css'
 
 
-function MyNav({onSearch}) {
-  const [searchTerm, setSearchTerm]= useState('');
+function MyNav() {
 
-  const handleSearch =() =>{
-  onSearch(searchTerm);
- }
- 
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary" fixed="top">
       <Container fluid>
-        <Navbar.Brand href="#">My Auction</Navbar.Brand>
+        <Navbar.Brand className="lobster-regular" href="#">My Auction</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -40,3 +36,4 @@ function MyNav({onSearch}) {
 }
 
 export default MyNav;
+
