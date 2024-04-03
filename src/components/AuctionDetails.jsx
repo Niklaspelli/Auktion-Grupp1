@@ -58,43 +58,24 @@ function AuctionDetails() {
           }),
         });
   
-  //-----Add message-----
-
         if (!response.ok){
           if(response.status === 400 ) {
             const errorMessage = (await response.text()).replace("Bad Request", "Please try again!");
             setErrorMessage(errorMessage);
           }
-           /*  if (errorMessage.includes("Bid amount cannot be lower than the current highest bid amount")) {
-            console.error("Bad Request:", errorMessage);
-           // some state may be to show message??????
-          } else {
-            console.error("Error:", errorMessage); 
-          }
         } else {
-          console.error("Error:", response.statusText )
-        }*/
-  //-----Add message end-----
-        } else {
-
-         //Reset from field if bid is successfully posted!
           setBid("");
           setBidder('');
-          //Toggle fetchTrigger state It re-fetch bid data in CurrentBid component
           setFetchTrigger(prevState => !prevState);
         }
       } catch (error) {
         console.error("fetch error:");
       }
     };
-        
-
-// BID ---> END
-
 
     return (
         <div>
-            {/* {data.map((item, index) => ( // This data is not array*/}
+            
             <AuctionStyle>
                 <div className='BidCard'>
                   
@@ -118,7 +99,7 @@ function AuctionDetails() {
                     </ul>
 
                     <h2>Place Your Bid</h2>
-                   {/* Johanna lagt till  */}
+                
                    
                     <Form.Floating className="mb-3">
                     
@@ -129,14 +110,6 @@ function AuctionDetails() {
                           value={bid}
                           onChange={(e)=> setBid(e.target.value)}
                         />
-
-                       {/*  <input
-                          className='bidInput'
-                          type="text"
-                          placeholder="Group Code"
-                          value={groupCode}
-                          onChange={(e) => setGroupCode(e.target.value)}
-                        />  */}
 
                         <input
                           className='bidInput'
