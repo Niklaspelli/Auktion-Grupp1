@@ -8,12 +8,27 @@ function FutureAuctions() {
   const [allAuctions, setAllAuctions] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [forceRender, setForceRender] = useState(Math.random()); // Initial random value
+
 
   useEffect(() => {
-    // Fetch all auctions and save them as an array
+    // Fetch auctions immediately on initial render
     fetchAuctions();
-  }, []); // Removed allAuctions due infinity loop at fetch = "To many requests" !  // Johanna
-  // }, [allAuctions]); // whenever data changes updating the view with the latest data
+  
+    return () => {}; // Empty cleanup
+  }, []);
+  
+  useEffect(() => {
+    //When user delete an auction delete the auction from view after 3 seccond
+    if (forceRender) {
+      const timeoutId = setTimeout(() => {
+        fetchAuctions();
+      }, 3000);
+  
+      return () => clearTimeout(timeoutId);
+    }
+  }, [forceRender]);
+
 
   const fetchAuctions = async () => {
     try{
@@ -38,6 +53,7 @@ function FutureAuctions() {
 
   const handleDelete = (auctionId) =>{
     setAllAuctions(prevData => prevData.filter(auction => auction.auctionId !==auctionId ))
+    setForceRender(Math.random()); // Update forceRender to trigger re-render
   }
 
   const handleSearch = () => {
