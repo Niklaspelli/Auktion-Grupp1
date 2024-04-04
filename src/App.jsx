@@ -7,22 +7,15 @@ import AuctionPast from './components/AuctionPast';
 import AuctionDetails from './components/AuctionDetails';
 import AuctionCreate from './components/AuctionCreate';
 import AuctionFuture from './components/AuctionFuture';
-import { useState } from 'react';
 
 function App() {
-  const [searchTerm, setSearchTerm]= useState('');
-
-  const handleSearch = (term) =>{
-    setSearchTerm(term);
-  };
-
 
   return (
     <>
-    <MyNav onSearch={handleSearch}  />
+    <MyNav/>
     <Routes>
         <Route path="/newauction" element={<AuctionCreate/>} />
-        <Route path="/" element={<AuctionHome  searchTerm={searchTerm}/>} />
+        <Route path="/" element={<AuctionHome/>} />
         <Route path="/notcurrent" element={<AuctionPast/>} />
         <Route path="/future" element={<AuctionFuture />} />
         <Route path="/auctiondetails/:id" element={<AuctionDetails />} />
