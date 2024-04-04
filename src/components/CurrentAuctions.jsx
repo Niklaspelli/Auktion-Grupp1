@@ -1,6 +1,8 @@
-//import { useState, useEffect } from 'react'
-//import { Link } from 'react-router-dom';
-//import { Form, Button } from 'react-bootstrap';
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
+import { Form, Button } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import image from "../assets/image.jpg";
 
 
 function CurrentAuctions() {
@@ -83,24 +85,63 @@ function CurrentAuctions() {
           ))}
         </div>
       ) : (
-        <div>
-          {allAuctions.map((item, index) => (
-            <div key={index} className='Card'>
-              <Link key={item.AuctionId} to={"/auctiondetails/" + item.AuctionID}>
-                <ul>
-                  <b>{item.AuctionID}</b>
-                  <h2>{item.Title}</h2>
-                  <div><b>Starting price: </b><b>{item.StartingPrice}:-</b></div>
-                  <p><b>Description: </b>{item.Description}</p>
-                  <div>Seller: <b>{item.CreatedBy}</b></div>
-                  <p><b>Startdate:</b> {item.StartDate}</p>
-                  <p><b>Enddate: </b>{item.EndDate}</p>
-                </ul>
-              </Link>
-            </div>
-          ))}
-        </div>
-      )}
+        // <div>
+        //   {allAuctions.map((item, index) => (
+        //     <div key={index} className='Card'>
+        //       <Link key={item.AuctionId} to={"/auctiondetails/" + item.AuctionID}>
+        //         <ul>
+        //           <b>{item.AuctionID}</b>
+        //           <h2>{item.Title}</h2>
+        //           <div><b>Starting price: </b><b>{item.StartingPrice}:-</b></div>
+        //           <p><b>Description: </b>{item.Description}</p>
+        //           <div>Seller: <b>{item.CreatedBy}</b></div>
+        //           <p><b>Startdate:</b> {item.StartDate}</p>
+        //           <p><b>Enddate: </b>{item.EndDate}</p>
+        //         </ul>
+        //       </Link>
+        //     </div>
+        //   ))}
+        // </div>
+
+      //   <div>
+      //   {allAuctions.map((item, index) => (
+      //     <div key={index} className='Card'>
+      //       <Link key={item.AuctionId} to={"/auctiondetails/" + item.AuctionID}>
+      //         <ul>
+      //           <b>{item.AuctionID}</b>
+      //           <h2>{item.Title}</h2>
+      //           <div><b>Starting price: </b><b>{item.StartingPrice}:-</b></div>
+      //           <p><b>Description: </b>{item.Description}</p>
+      //           <div>Seller: <b>{item.CreatedBy}</b></div>
+      //           <p><b>Startdate:</b> {item.StartDate}</p>
+      //           <p><b>Enddate: </b>{item.EndDate}</p>
+      //         </ul>
+      //       </Link>
+      //     </div>
+      //   ))}
+      // </div>
+
+      // JOHANNA STYLE
+      <div className="d-flex flex-wrap justify-content-center">
+      {allAuctions.map((auction) => (
+        <Card key={auction.AuctionID} style={{ width: '25rem', margin: '5px' }}>
+          <Card.Body>
+          <Card.Img variant="top" src={image} />
+            <Card.Title>{auction.Title}</Card.Title>
+            <Card.Subtitle className="mb-2 text-muted">{auction.AuctionID}</Card.Subtitle>
+            <Card.Text>{auction.Description}</Card.Text>
+            <Card.Text>Starting price: {auction.StartingPrice}</Card.Text>
+            <Card.Text>Seller: {auction.CreatedBy}</Card.Text>
+            <Card.Text>Start date: {auction.StartDate}</Card.Text>
+            <Card.Text>End date: {auction.EndDate}</Card.Text>
+            <Link to={`/auctiondetails/${auction.AuctionID}`}>
+              <Button variant="primary">View details</Button>
+            </Link>
+          </Card.Body>
+        </Card>
+      ))}
+    </div>
+    )}
     </div>
     </div>
   );

@@ -12,11 +12,12 @@ function FutureAuctions() {
   useEffect(() => {
     // Fetch all auctions and save them as an array
     fetchAuctions();
-  }, [allAuctions]); // whenever data changes updating the view with the latest data
+  }, []); // Removed allAuctions due infinity loop at fetch = "To many requests" !  // Johanna
+  // }, [allAuctions]); // whenever data changes updating the view with the latest data
 
   const fetchAuctions = async () => {
     try{
-    const response = await fetch('https://auctioneer.azurewebsites.net/auction/x1y/')
+    const response = await fetch('https://auctioneer.azurewebsites.net/auction/x1y/') 
       if (!response.ok) {
         throw new Error('Failed to fetch auctions');
       }  
@@ -52,7 +53,7 @@ function FutureAuctions() {
     setSearchResults(results);
   };
 
-  console.log(allAuctions.length)
+  console.log(allAuctions.length) // 0 if none. 
 
   return (
     <div>

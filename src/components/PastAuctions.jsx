@@ -1,5 +1,5 @@
 import { useState, useEffect} from 'react'
-import BidList from './BidList';
+import BidList  from './BidList';
 import { Button, Form } from 'react-bootstrap';
 
 

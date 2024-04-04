@@ -1,6 +1,6 @@
-//import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Container, Button } from "react-bootstrap";
-//import Form from "react-bootstrap/Form";
+import Form from "react-bootstrap/Form";
 import styled from "styled-components";
 
 const NewAuction = () => {
