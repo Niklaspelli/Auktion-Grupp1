@@ -32,7 +32,7 @@ function FutureAuctions() {
 
   const fetchAuctions = async () => {
     try{
-    const response = await fetch('https://auctioneer.azurewebsites.net/auction/x1y/')
+    const response = await fetch('https://auctioneer.azurewebsites.net/auction/x1y/') 
       if (!response.ok) {
         throw new Error('Failed to fetch auctions');
       }  
@@ -69,7 +69,7 @@ function FutureAuctions() {
     setSearchResults(results);
   };
 
-  console.log(allAuctions.length)
+  console.log(allAuctions.length) // 0 if none. 
 
   return (
     <div>
