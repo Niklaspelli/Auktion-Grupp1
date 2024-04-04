@@ -1,6 +1,7 @@
 import { useState, useEffect} from 'react'
 import BidList  from './BidList';
 import { Button, Form } from 'react-bootstrap';
+import '../App.css';
 
 
 function PastAuctions() {
@@ -49,7 +50,7 @@ function PastAuctions() {
 
   return (
     <div>
-      <div className="search-container mt-5 p-5  fixed-top d-flex justify-content-center ">
+      <div className="search-container mt-5 p-2  fixed-top d-flex justify-content-center bg-body-tertiary">
         <Form className="d-flex ">
           <Form.Control
             type="search"
