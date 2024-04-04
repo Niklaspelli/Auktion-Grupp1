@@ -6,6 +6,10 @@
   
 }
 
+body{
+  background: linear-gradient(grey, white,grey);
+}
+
 .Card:hover {
   filter: drop-shadow(0 0 5em #54545caa);
 }

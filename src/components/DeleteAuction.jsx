@@ -23,6 +23,7 @@ const DeleteAuction = ({ auctionId, onDelete }) => {
       .then(res => {
         if (res.ok) {
           onDelete(auctionId); // Notify the parent component that the auction was deleted
+          console.log(auctionId)
           setDeleted(true); // Set the state to indicate that the auction has been deleted
           setMessage("Auction has been deleted"); // Set message
         } else {
