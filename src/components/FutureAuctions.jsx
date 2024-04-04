@@ -77,7 +77,7 @@ function FutureAuctions() {
         <Alert variant='warning'> There is no Upcoming Auction. You can create{' '} <Alert.Link href="/newauction">New Auction</Alert.Link>!</Alert>
       ) : (
         <div>
-          <div className="search-container mt-5 p-5  fixed-top d-flex justify-content-center ">
+          <div className="search-container mt-5 p-2  fixed-top d-flex justify-content-center bg-body-tertiary">
             <Form className="d-flex ">
               <Form.Control
                 type="search"
@@ -96,7 +96,7 @@ function FutureAuctions() {
             {searchTerm !== '' ? (
                 <div>
                   {searchResults.map((item) => (
-                    <div key={item.AuctionID} className='Card'>
+                    <div key={item.AuctionID} className='Card'style={{ backgroundColor: 'white' }}>
                       <ul>
                         <b>{item.AuctionID}</b>
                         <h2>{item.Title}</h2>
@@ -114,7 +114,7 @@ function FutureAuctions() {
                  : (
                   <div>
                   {allAuctions.map((item, index) => (
-                    <div key={index} className='Card'>
+                    <div key={index} className='Card'style={{ backgroundColor: 'white' }} >
                       <ul>
                         <b>{item.AuctionID}</b>
                         <h2>{item.Title}</h2>
