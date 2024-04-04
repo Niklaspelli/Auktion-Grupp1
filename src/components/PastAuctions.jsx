@@ -70,7 +70,7 @@ function PastAuctions() {
       <div>
       {searchResults.map((item) => (
        
-        <div key={item.AuctionID} className='Card'>       
+        <div key={item.AuctionID} className='Card' style={{ backgroundColor: 'white' }} >       
           <ul>
           <b>{item.AuctionID}</b>
           <h2>{item.Title}</h2>
@@ -90,7 +90,7 @@ function PastAuctions() {
         <div>
         {allAuctions.map((item, index) => (
        
-        <div key={index} className='Card'> 
+        <div key={index} className='Card' style={{ backgroundColor: 'white' }}> 
       
           <ul>
           <b>{item.AuctionID}</b>
