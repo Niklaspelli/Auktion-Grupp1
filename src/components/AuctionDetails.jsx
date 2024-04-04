@@ -5,11 +5,12 @@ import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
 import styled from "styled-components";
 import DeleteAuction from "./DeleteAuction";
-
+import { useNavigate } from 'react-router-dom';
 
 
 function AuctionDetails() {
     const [data, setData] = useState({});//old:[]
+    const [bids, setBids] = useState([]);
     const location = useLocation();
 
     const [bid, setBid] = useState('');
@@ -17,6 +18,8 @@ function AuctionDetails() {
     const [groupCode, setGroupCode] = useState('x1y');
     const [errorMessage, setErrorMessage] = useState('');
     const [fetchTrigger, setFetchTrigger] = useState(false);
+    const [bidPosted, setBidPosted] = useState(false);
+    const navigate = useNavigate();
 
     const fetchDetails = async (AuctionID) => {
         try {
@@ -35,9 +38,21 @@ function AuctionDetails() {
         }
     };
 
+    const fetchBidDetails = async (AuctionID) => {
+      try {
+          const api = await fetch(`https://auctioneer.azurewebsites.net/bid/x1y/${AuctionID}`);
+          const bidData = await api.json();
+          console.log(bidData);
+          setBids(bidData);
+      } catch (error) {
+          console.error('Error fetching bid details:', error);
+      }
+  };
+
     useEffect(() => {
         const lastPartOfLocationPath = location.pathname.split('/').slice(-1)[0];
         fetchDetails(lastPartOfLocationPath);
+        fetchBidDetails(lastPartOfLocationPath);
     }, [location]);
 
 
@@ -67,11 +82,18 @@ function AuctionDetails() {
           setBid("");
           setBidder('');
           setFetchTrigger(prevState => !prevState);
+          setBidPosted(true); // SetbidPosted -> true when bid is successfully posted
         }
       } catch (error) {
         console.error("fetch error:");
       }
     };
+
+    const handleDelete = () =>{
+      setData({})
+      navigate('/');
+      //setForceRender(Math.random()); // Update forceRender to trigger re-render
+    }
 
     return (
         <div>
@@ -138,8 +160,7 @@ function AuctionDetails() {
                 </div>
         </AuctionStyle>
 
-        <DeleteAuction />
-
+        {!bidPosted && bids.length === 0 && Object.keys(data).length > 0 && <DeleteAuction auctionId={data.AuctionID} onDelete={handleDelete} />}
         
 
         </div>
