@@ -1,11 +1,11 @@
-import CurrentAuctions from './CurrentAuctions'
+import CurrentAuctions from './CurrentAuctionsMiwa'
 
 import React from 'react'
 
-const AuctionHome = () => {
+const AuctionHome = ({searchTerm}) => {
   return (
     <div>
-   <CurrentAuctions />
+   <CurrentAuctions searchTerm= {searchTerm} />
    </div>
   )
 }

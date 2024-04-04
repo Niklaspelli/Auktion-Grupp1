@@ -15,6 +15,8 @@ function AuctionDetails() {
     const [bid, setBid] = useState('');
     const [bidder, setBidder] = useState('');
     const [groupCode, setGroupCode] = useState('x1y');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [fetchTrigger, setFetchTrigger] = useState(false);
 
     const fetchDetails = async (AuctionID) => {
         try {
@@ -43,7 +45,7 @@ function AuctionDetails() {
     e.preventDefault();
 
     try {
-      fetch('https://auctioneer.azurewebsites.net/bid/x1y', {
+      const response =await fetch('https://auctioneer.azurewebsites.net/bid/x1y', {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -53,16 +55,39 @@ function AuctionDetails() {
             AuctionID: AuctionID, 
             Bidder: bidder,
             GroupCode: groupCode,
-          }, console.log(AuctionID)),
+          }),
+        });
+  
+  //-----Add message-----
+
+        if (!response.ok){
+          if(response.status === 400 ) {
+            const errorMessage = (await response.text()).replace("Bad Request", "Please try again!");
+            setErrorMessage(errorMessage);
+          }
+           /*  if (errorMessage.includes("Bid amount cannot be lower than the current highest bid amount")) {
+            console.error("Bad Request:", errorMessage);
+           // some state may be to show message??????
+          } else {
+            console.error("Error:", errorMessage); 
+          }
+        } else {
+          console.error("Error:", response.statusText )
+        }*/
+  //-----Add message end-----
+        } else {
+
+         //Reset from field if bid is successfully posted!
+          setBid("");
+          setBidder('');
+          //Toggle fetchTrigger state It re-fetch bid data in CurrentBid component
+          setFetchTrigger(prevState => !prevState);
         }
-      );
-      setBid("");
-      setBidder('');
-      
-    } catch (error) {
-      console.error("fetch error:");
-    }
-  };
+      } catch (error) {
+        console.error("fetch error:");
+      }
+    };
+        
 
 // BID ---> END
 
@@ -80,7 +105,7 @@ function AuctionDetails() {
                         <button className="dropbtn">Current bid</button>
                          <div className="dropdown-content">
                             
-                        <CurrentBid />
+                        <CurrentBid  auctionId ={data.AuctionID} fetchTrigger={fetchTrigger} />
                        
                         </div>
                         </div> 
@@ -105,13 +130,13 @@ function AuctionDetails() {
                           onChange={(e)=> setBid(e.target.value)}
                         />
 
-                        <input
+                       {/*  <input
                           className='bidInput'
                           type="text"
                           placeholder="Group Code"
                           value={groupCode}
                           onChange={(e) => setGroupCode(e.target.value)}
-                        /> 
+                        />  */}
 
                         <input
                           className='bidInput'
@@ -124,11 +149,26 @@ function AuctionDetails() {
                     {/* <button type="submit">Post Bid</button> */}
                     <Button variant="success" type="submit" onClick={(e) => handleSubmit(e, data.AuctionID)}>Post Bid</Button>{''}
                     
+                    
+                    {errorMessage && (
+                        <div className="alert alert-danger position-relative" role="alert">
+                          <button type="button" 
+                                  className="btn-close position-absolute top-0 end-0 mt-1 me-2" 
+                                  aria-label="Close" 
+                                  onClick={() => setErrorMessage('')}>
+                          </button>
+                          <span className="d-block py-2 px-4">{errorMessage}</span>
+                        </div>
+                      )}
+                     
 
                 </div>
         </AuctionStyle>
 
         <DeleteAuction />
+
+        
+
         </div>
         
     );

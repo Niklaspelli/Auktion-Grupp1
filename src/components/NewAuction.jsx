@@ -160,9 +160,9 @@ const NewAuction = () => {
        </Message>
       )}
         {status === "ERROR" && (
-        <Message>
+        <MessageError>
           <p>Failed to post auction. Please try again later.</p>
-       </Message>
+       </MessageError>
       )}
        {errorMessage && (
         <MessageError>
