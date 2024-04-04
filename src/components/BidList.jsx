@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import { Button } from 'react-bootstrap';
+//import { Button } from 'react-bootstrap';
 
 const BidList = ({AuctionId, showHighestOnly}) => {
-    const [bids, setBids] = useState([]);
+    const [bids, setBids] = useState([]); 
     const [higestBid, setHighestBid] = useState(null);
 
     useEffect(() =>{

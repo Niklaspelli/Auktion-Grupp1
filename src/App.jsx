@@ -20,6 +20,7 @@ function App() {
         <Route path="/future" element={<AuctionFuture />} />
         <Route path="/auctiondetails/:id" element={<AuctionDetails />} />
     </Routes>
+    {/* <Footer /> */}
     </>
   )
 }
