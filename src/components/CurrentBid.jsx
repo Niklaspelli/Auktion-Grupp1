@@ -53,5 +53,3 @@ function CurrentBid({ auctionId, fetchTrigger }) {
 }    
 
 export default CurrentBid;
-
-
