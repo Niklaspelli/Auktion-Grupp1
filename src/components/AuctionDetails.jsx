@@ -73,6 +73,8 @@ function AuctionDetails() {
       }
     };
 
+   
+
     return (
         <div>
             

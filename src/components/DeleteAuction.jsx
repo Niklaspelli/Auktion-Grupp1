@@ -47,6 +47,9 @@ const DeleteAuction = ({ auctionId, onDelete }) => {
   );
 };
 
-export default DeleteAuction
+export default DeleteAuction;
 
-
+const MessageError = styled.div`
+  color: red;
+  font-weight: bold;
+`;
