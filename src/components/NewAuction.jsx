@@ -164,9 +164,6 @@ const NewAuction = () => {
   );
 };
 
-
-
-
 export default NewAuction;
 
  const Message = styled.div`
